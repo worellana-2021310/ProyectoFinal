@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Galería Interactiva</title>
+  <link rel="stylesheet" type="text/css" href="./assets/css/style-page2.css" />
+  <link rel="stylesheet" type="text/css" href="./assets/css/hoja-editor-prueba.css" />
+  <link rel="stylesheet" type="text/css" href="./assets/css/flexslider.css" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background: url('https://t3.ftcdn.net/jpg/04/06/07/68/360_F_406076806_h1bI2jPHoqCoWwucSlYAiwSz81M52pHa.jpg') repeat;
+      background-color: #eaeaea;
+      padding: 20px;
+    }
+
+    .galeria {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .imagen {
+      width: 300px;
+      height: 200px;
+      object-fit: cover;
+      cursor: pointer;
+      transition: transform 0.3s;
+      border: 2px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .imagen:hover {
+      transform: scale(1.05);
+      border-color: #666;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 10;
+      padding-top: 60px;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    .modal-contenido {
+      margin: auto;
+      display: block;
+      max-width: 90%;
+      max-height: 80%;
+      border-radius: 10px;
+    }
+
+    .cerrar {
+      position: absolute;
+      top: 30px;
+      right: 40px;
+      color: white;
+      font-size: 40px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    h1:hover {
+      color: red;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Encabezado de la pagina -->
+  <header>
+    <h2>Galeria de imágenes</h2>
+  </header>
+
+  <nav id="menu">
+    <ul>
+      <li style="--clr:#00ade1">
+        <a href="./index.html" data-text="&nbsp;Inicio">&nbsp;Inicio&nbsp;</a>
+      </li>
+
+      <li style="--clr:#00ff6493">
+        <a href="./page1.html" data-text="&nbsp;Alerta">&nbsp;Alerta&nbsp;</a>
+      </li>
+
+      <li style="--clr:red">
+        <a href="./page2.html" data-text="&nbsp;Galeria">&nbsp;Galeria&nbsp;</a>
+      </li>
+
+      <li style="--clr:yellow">
+        <a href="./page3.html" data-text="&nbsp;Calculadora">&nbsp;Calculadora&nbsp;</a>
+      </li>
+    </ul>
+    <div class="clearfix"></div>
+  </nav>
+
+  <br>
+  <h1>Galería de Imágenes</h1>
+  <br>
+  <div class="galeria">
+    <img
+      src="https://3.bp.blogspot.com/-poLA9DgE3FM/WOWr98wVc9I/AAAAAAAAAIg/baNmF_F3tMkEe9iGOqsSLasZMu7i0J6igCLcB/s1600/Steve-Minecraft-Wallpapers-HD-Wallpaper.jpg"
+      alt="Imagen 1" class="imagen"> <data-descriipt><b>Minecraft es un videojuego tipo sandbox 3D donde los jugadores
+        exploran y modifican un mundo generado proceduralmente, hecho de bloques cúbicos. Los jugadores pueden
+        recolectar
+        recursos, fabricar objetos, construir estructuras y enfrentarse a criaturas hostiles, todo en un entorno virtual
+        infinito. El juego ofrece diferentes modos de juego, como supervivencia, creativo y aventura, así como la
+        posibilidad de jugar en solitario o con otros jugadores en servidores online o en pantalla
+        dividida.</b></data-descriipt>
+    <img src="https://pbs.twimg.com/media/EDyfNcTU8AA5A_2.jpg:large" alt="Imagen 2" class="imagen">
+    <data-descriipt><b>Call
+        of Duty: Mobile es un juego de disparos en primera persona (FPS) multijugador gratuito, diseñado para
+        dispositivos
+        móviles. Ofrece modos de juego icónicos de Call of Duty, como Battle Royale (100 jugadores), modos multijugador
+        como Duelo por equipos y Dominio, así como modos de Zombis.</b></data-descriipt>
+    <img
+      src="https://images.squarespace-cdn.com/content/v1/606d159a953867291018f801/1619987722169-VV6ZASHHZNRBJW9X0PLK/Key_Art_02_layeredjpg.jpg?format=1500w"
+      alt="Imagen 3" class="imagen"> <data-descriipt><b>Hollow Knight es un juego de acción y aventura de desplazamiento
+        lateral en 2D del género metroidvania, desarrollado por Team Cherry. El jugador controla a un caballero
+        insectoide
+        que explora el reino de Hallownest, un lugar afectado por una enfermedad contagiosa. El juego combina
+        exploración,
+        combate y resolución de acertijos en un mundo interconectado.</b></data-descriipt>
+    <img src="https://images.hdqwalls.com/download/counter-strike-2-5k-mp-2560x1080.jpg" alt="Imagen 4" class="imagen">
+    <data-descriipt><b>Counter-Strike 2 (CS2) es un videojuego de disparos táctico en primera persona (FPS)
+        multijugador,
+        desarrollado y publicado por Valve. Es la quinta entrega principal de la serie Counter-Strike, una iteración del
+        popular Counter-Strike: Global Offensive (CS:GO). CS2 se centra en la competencia entre dos equipos, los
+        Terroristas y los Contraterroristas, para completar objetivos como plantar o desactivar una bomba, o rescatar o
+        custodiar rehenes.</b></data-descriipt>
+  </div>
+  <br>
+
+
+  <div id="modal" class="modal">
+    <span class="cerrar">&times;</span>
+    <img class="modal-contenido" id="imagenAmpliada" alt="Imagen ampliada">
+    <div id="descripcion" class="modal-descripcion"></div>
+  </div>
+
+  <script>
+    const imagenes = document.querySelectorAll('.imagen');
+    const modal = document.getElementById('modal');
+    const imagenAmpliada = document.getElementById('imagenAmpliada');
+    const descripcion = document.getElementById('descripcion');
+    const cerrar = document.querySelector('.cerrar');
+
+    imagenes.forEach(img => {
+      img.addEventListener('click', () => {
+        modal.style.display = 'block';
+        imagenAmpliada.src = img.src;
+        descripcion.textContent = img.getAttribute('data-descripcion');
+      });
+    });
+    cerrar.addEventListener('click', () => {
+      modal.style.display = 'none';
+    });
+
+    window.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.style.display = 'none';
+      }
+    });
+  </script>
+
+  <footer>
+    <!-- Pie de página -->
+    <h2>Todos los derechos reservados ©Copyright 2025 Universidad Mariano Galvez de Guatemala</h2>
+  </footer>
+</body>
+
+</html>
